@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>QuestionFour.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #404040; background-color: #e9e8e2; font-family: monospace}
+.ST0 {color: #969696; font-family: monospace; font-weight: bold}
+.ST1 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST2 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST3 {font-family: monospace; font-style: italic}
+.ST5 {color: #ce54b8; font-family: monospace; font-style: italic}
+.ST4 {color: #ce54b8}
+.string {color: #1e9347}
+.ST6 {color: #1e9347; font-family: monospace; font-weight: bold}
+.literal {color: #336bdd}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\benkimz\Desktop\Java\projects\QuestionFour.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/**</span>
+ 2 <span class="comment"> *</span>
+ 3 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">benkimz</span>
+ 4  <span class="comment">*/</span>
+ 5 <h3 style="color: green;">Question:</h3><p>
+	Write an application program in java to convert several temperatures in Fahrenheits to Celcius using the following conversion formula.<br>
+	<code>C = (f - 32) / 1.8</code> and display the values in a tabular form.
+ </p><hr>
+ 6 <span class="literal">import</span> java.util.ArrayList;
+ 7 
+ 8 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">QuestionFour</span> {
+ 9     
+10     <span class="literal">public</span> <span class="literal">static</span> ArrayList&lt;Float&gt; <span class="ST2">converter</span>(Float... fahrenheits){
+11         ArrayList&lt;Float&gt; celcius = <span class="literal">new</span> ArrayList&lt;&gt;();
+12         <span class="literal">for</span>(Float f: fahrenheits){
+13             Float result = (<span class="literal">float</span>) ((f - 32) / 1.8);
+14             celcius.add(result);
+15         }
+16         <span class="ST3">printTable</span>(fahrenheits, celcius);
+17         <span class="literal">return</span> celcius;
+18     }
+19     
+20     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">printTable</span>(Float[] fahrenheits, ArrayList celcius){
+21         <span class="literal">try</span>{
+22             <span class="literal">assert</span>(fahrenheits.<span class="ST4">length</span> == celcius.size());
+23             System.<span class="ST5">out</span>.println(<span class="string">&quot;</span><span class="ST6">\n</span><span class="ST6">\n</span><span class="ST6">\t</span><span class="string">| *Fahrenheits </span><span class="ST6">\t</span><span class="string"> | </span><span class="ST6">\t</span><span class="string"> *Celcius </span><span class="ST6">\n</span><span class="string">&quot;</span> + 
+24                     <span class="string">&quot;</span><span class="ST6">\t</span><span class="string">-----------------------------------</span><span class="string">&quot;</span>);
+25             <span class="literal">for</span>(<span class="literal">short</span> i = 0; i &lt; fahrenheits.<span class="ST4">length</span>; i++){
+26                 Float f = (<span class="literal">float</span>) fahrenheits[i];
+27                 Float c = (<span class="literal">float</span>) celcius.get(i);
+28                 System.<span class="ST5">out</span>.println(<span class="string">&quot;</span><span class="ST6">\t</span><span class="string">| </span><span class="string">&quot;</span> + f + <span class="string">&quot;</span> <span class="ST6">\t</span><span class="ST6">\t</span><span class="string"> | </span><span class="ST6">\t</span> <span class="string">&quot;</span> + c);
+29             }
+30         }<span class="literal">catch</span>(Exception e){
+31             System.<span class="ST5">out</span>.println(<span class="string">&quot;</span><span class="string">--null output--</span><span class="string">&quot;</span>);
+32         }
+33     }
+34     
+35     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String args[]) {
+36         <span class="comment">// convert several temperatures</span>
+37        ArrayList&lt;Float&gt; conversions = <span class="ST3">converter</span>(
+38                40.f,
+39                37.f,
+40                76.f
+41        );
+42     }
+43 }
+44 
+</pre></body>
+</html>

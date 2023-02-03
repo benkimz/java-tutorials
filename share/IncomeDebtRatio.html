@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>IncomeDebtRatio.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #404040; background-color: #e9e8e2; font-family: monospace}
+.ST0 {color: #969696; font-family: monospace; font-weight: bold}
+.ST1 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST3 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST2 {color: #ce54b8; font-family: monospace; font-style: italic}
+.string {color: #1e9347}
+.ST4 {color: #1e9347; font-family: monospace; font-weight: bold}
+.literal {color: #336bdd}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\benkimz\Desktop\Java\IncomeDebtRatio.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/**</span>
+ 2 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">benkimz</span>
+ 3 <span class="comment"> * </span><span class="comment">QUESTION</span> <span class="comment">ONE</span>
+ 4 <span class="comment"> * </span><span class="comment">program</span> <span class="comment">to</span> <span class="comment">calculate</span> <span class="comment">income</span><span class="comment">-</span><span class="comment">debt</span> <span class="comment">ratio</span>
+ 5  <span class="comment">*/</span>
+ 6 <span class="literal">import</span> java.util.Scanner;
+ 7 
+ 8 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">IncomeDebtRatio</span>{
+ 9     <span class="comment">//Variable declaration</span>
+10     <span class="comment">/*</span>
+11 <span class="comment">        A customers debt and income information is private to them hence</span>
+12 <span class="comment">        we use private variables</span>
+13 <span class="comment">        However, we make the variables static so that we can access them within</span>
+14 <span class="comment">        the main class without instanciating it.</span>
+15 <span class="comment">    */</span>
+16     
+17     <span class="literal">private</span> <span class="literal">static</span> <span class="literal">double</span> <span class="ST2">debt</span>, <span class="ST2">income</span>;
+18     
+19     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST3">main</span>(String args[]){
+20         <span class="comment">//Scanner object  for taking users input</span>
+21         Scanner input = <span class="literal">new</span> Scanner(System.<span class="ST2">in</span>);
+22         <span class="comment">//Welcome message</span>
+23         System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">--- System Online [Ready to Serve] ---</span><span class="string">&quot;</span>);
+24         <span class="literal">int</span> customers = 20; <span class="comment">// declare about 20 customers</span>
+25         <span class="literal">for</span>(<span class="literal">short</span> i=1; i&lt;=customers; i++){
+26             System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string">* [CUSTOMER NUMBER: </span><span class="string">&quot;</span> + i + <span class="string">&quot;</span><span class="string">]</span><span class="string">&quot;</span>);
+27             <span class="ST2">debt</span> = 0.0;<span class="comment">//reset the value for debt for every new costomer to 0.0</span>
+28             <span class="literal">try</span>{
+29                 <span class="comment">//Prompt the user to enter value for income</span>
+30                 System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> Enter Income: </span><span class="string">&quot;</span>);
+31                 <span class="ST2">income</span> = input.nextDouble();
+32 
+33                 <span class="comment">//Request for Mortgages and add value to debt</span>
+34                 System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> Mortgagues: </span><span class="string">&quot;</span>);
+35                 <span class="ST2">debt</span> += input.nextDouble();
+36 
+37                 <span class="comment">//Request for Automobile Loan value and to debt</span>
+38                 System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> Automobile Loans: </span><span class="string">&quot;</span>);
+39                 <span class="ST2">debt</span> += input.nextDouble();
+40 
+41                 <span class="comment">//Request for Credit Card Loan and add value to debt</span>
+42                 System.<span class="ST2">out</span>.print(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> Credit Card Loan: </span><span class="string">&quot;</span>);
+43                 <span class="ST2">debt</span> += input.nextDouble();
+44 
+45                 <span class="comment">// Compute ratio</span>
+46                 <span class="literal">double</span> ratio = <span class="ST2">debt</span> / <span class="ST2">income</span>;
+47                 
+48                 <span class="comment">//Print or display the output</span>
+49                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="ST4">\n</span><span class="ST4">\t</span><span class="string"> ---output: </span><span class="string">&quot;</span> + ratio);
+50             }<span class="literal">catch</span>(Exception error){
+51                 System.<span class="ST2">out</span>.println(<span class="string">&quot;</span><span class="string">---invalid argument---</span><span class="string">&quot;</span>);
+52             }
+53         }        
+54     }
+55 }
+56 
+</pre></body>
+</html>

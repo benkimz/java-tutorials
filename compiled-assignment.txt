@@ -1,0 +1,365 @@
+#
+#	JAVA PROGRAMMING ASSIGNMENT
+#	BASIC APPROACHES
+---------------------------------------------------------------------------------------
+
+
+#	QUESTION 1 ~
+-----------------------------------------------------------------------
+
+/**
+ * question 1
+ * @author benkimz
+ */
+import java.util.Scanner;
+
+public class IncomeDebtRatio{
+    
+    //DECLARE VARIABLES
+    
+    private static double debt = 0, income;
+    private static double mortgages, automobile_loan, credit_loan;
+    
+    public static void main(String args[]){
+        Scanner keyboard = new Scanner(System.in);
+        //IncomeDebtRatio compute = new IncomeDebtRatio();
+        int number_of_users = 2;
+        // Loop 20 times requesting for details about several users
+        for(int i = 0; i < number_of_users; i++){
+            
+            System.out.print("\n Enter User Details:-\n");
+            /*
+                * Take details about:
+                * income, mortgages, automobile loans, credit loans
+            */
+            try{
+                System.out.print("\n Income: ");
+                income = keyboard.nextDouble();
+                System.out.print("\n Mortgages: ");
+                mortgages = keyboard.nextDouble();
+                System.out.print("\n Automobile Loan: ");
+                automobile_loan = keyboard.nextDouble();
+                System.out.print("\n Credit Card Loan: ");
+                credit_loan = keyboard.nextDouble();
+                
+                debt = mortgages + automobile_loan + credit_loan;
+                // Print the debt income ratio
+                // Debt / Income
+                System.out.print("\n \t Debt / Income Ratio: " + 
+                        (debt / income) + "\n");                
+            }catch(Exception e){
+                System.out.println("...........invalid input............");
+            }
+        }         
+    }
+}
+
+#	QUESTION 2 ~
+-----------------------------------------------------------------
+/**
+ *
+ * @author benkimz
+ */
+import java.util.Scanner;
+public class DistanceLearning {
+    public static void dashes(int count){
+        for(int i=0;i<count;i++){System.out.print("-");}
+    }    
+    public static void main(String args[]) {
+        Scanner keypad = new Scanner(System.in);
+        while(true){
+            dashes(30); 
+            try{
+                System.out.print("\n Enter Hours: ");
+                int hours = keypad.nextInt();
+                if(hours <= 0){break;}
+                double cost = 0;
+                if(hours <= 15){
+                    cost += hours * 500;
+                }else{
+                    cost += hours * 445;
+                } 
+                dashes(30);
+                System.out.print("\n Total cost: " + cost + "\n");                 
+            }catch(Exception e){
+                break;
+            }
+        }
+    }
+}
+
+
+
+
+#	QUESTION 3 ~ 
+--------------------------------------------------------------
+/**
+ *
+ * @author benkimz
+ */
+import java.util.Scanner;
+public class BodyMassIndex {
+    public static void dashes(int count){
+        for(int i=0;i<count;i++){System.out.print("-");}
+    }  
+    public static void main(String args[]) {
+        Scanner keypad = new Scanner(System.in);
+        double weight, height;
+        while(true){
+            try{
+                dashes(30);
+                System.out.print("\n Enter Weight: "); 
+                weight = keypad.nextDouble();
+                System.out.print("\n Enter Height: "); 
+                height = keypad.nextDouble();
+                dashes(30);
+                System.out.print("\n Your BMI is: " + 
+                        (weight / (height * height)) + "\n");                
+            }catch(Exception e){
+                break;
+            }
+            System.out.print("\n BMI VALUES \n"); 
+            dashes(30);
+            
+            System.out.print("\n UNDER WEIGHT" + "\t\t\t" + "LESS THAN 18.5");
+            System.out.print("\n NORMAL" + "\t\t\t" + "BETWEEN 18.5 AND 24.9");
+            System.out.print("\n OVERWEIGHT" + "\t\t\t" + "BETWEEN 25 AND 29.9");
+            System.out.print("\n OBESE" + "\t\t\t" + "30 OR GREATER");
+            
+            
+            System.out.print("\n\n");
+        }
+    }
+}
+
+
+
+
+#	QUESTION 4 ~
+-------------------------------------------------------------------
+/**
+ *
+ * @author benkimz
+ */
+
+import java.util.Scanner;
+
+public class QuadraticEquations {
+    public static void main(String args[]) {
+        Scanner keypad = new Scanner(System.in);
+        
+        double discriminant;
+        
+        while(true){
+            try{
+                double a, b, c;
+                System.out.print("\n Enter coefficient a: "); a = keypad.nextDouble();
+                System.out.print("\n Enter coefficient b: "); b = keypad.nextDouble();
+                System.out.print("\n Enter coefficient c: "); c = keypad.nextDouble();
+                discriminant = Math.pow(b, 2) - (4 * a * c);
+                
+                
+                // PRINT SOME DASHES FOR A NICE LOOK
+                System.out.print('\n');for(int i=0;i<60;i++){System.out.print('-');}
+                
+                if(discriminant == 0){
+                    //ROOT1 == ROOT2
+                    System.out.print("\n The roots are real and identical: [" + 
+                            (-b / 2 * a) + ", " + (-b / 2 * a) + "]\n\n");
+                }else if(discriminant > 0){
+                    //ROOTS ARE REAL BUT UNIDENTICAL
+                    System.out.print("\n The roots are real and unidentical: [" + 
+                            ((-b + Math.sqrt(discriminant)) / 2 * a) + ", " + ((-b - Math.sqrt(discriminant)) / 2 * a) + "]\n\n");               
+                }else{
+                    //THE ROOTS ARE COMPLEX
+                    
+                    System.out.print("\n The roots are complex: [" + 
+                            String.format("%.2f " + "+" + " %.2fi", (-b / 2 * a), (Math.sqrt(-discriminant) / 2* a)) + 
+                            ", " + String.format("%.2f " + "+" + " %.2fi", (-b / 2 * a), (Math.sqrt(-discriminant) / 2* a)) + "]\n\n");                 
+                }
+            
+            }catch(Exception e){
+                break;
+            }
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------
+
+
+
+#
+#	JAVA PROGRAMMING ASSIGNMENT
+#	AN ADVANCED APPROACH
+---------------------------------------------------------------------------------------
+
+
+#	QUESTION 1 ~
+-----------------------------------------------------------------
+/**
+ * question 1
+ * @author benkimz
+ */
+import java.util.Scanner;
+
+@FunctionalInterface
+interface OutputFormatting{
+    public abstract void dashes(int count);
+}
+
+public class IncomeDebtRatio{
+    
+    //DECLARE VARIABLES
+    
+    private static double debt, income;
+    
+    public static void main(String args[]){
+        OutputFormatting format = (int count)->{
+            for(int i=0;i<count;i++){System.out.print("-");}
+        };
+        Scanner keyboard = new Scanner(System.in);
+        //IncomeDebtRatio compute = new IncomeDebtRatio();
+        int users_no = 2;
+        // Loop 20 times requesting for details about several users
+        for(int i = 0; i < users_no; i++){
+            format.dashes(30); debt = 0.0;
+            System.out.print("\n Enter User Details:-\n");
+            /*
+                * Take details about:
+                * income, mortgages, automobile loans, credit loans
+            */
+            try{
+                System.out.print("\n Income: ");
+                income = keyboard.nextDouble();
+                System.out.print("\n Mortgages: ");
+                debt += keyboard.nextDouble();
+                System.out.print("\n Automobile Loan: ");
+                debt += keyboard.nextDouble();
+                System.out.print("\n Credit Card Loan: ");
+                debt += keyboard.nextDouble();
+                format.dashes(30);
+                // Print the debt income ratio
+                System.out.print("\n \t Debt / Income Ratio: " + 
+                        (debt / income) + "\n");                
+            }catch(Exception e){
+                System.out.println("...........invalid input............");
+            }
+        }         
+    }
+}
+
+
+#	QUESTION 3 ~
+----------------------------------------------------------------
+/**
+ *
+ * @author benkimz
+ */
+import java.util.Scanner;
+public class BodyMassIndex {
+    public static void dashes(int count){
+        for(int i=0;i<count;i++){System.out.print("-");}
+    }  
+    public static void main(String args[]) {
+        Scanner keypad = new Scanner(System.in);
+        double weight, height;
+        while(true){
+            try{
+                dashes(30);
+                System.out.print("\n Enter Weight: "); 
+                weight = keypad.nextDouble();
+                System.out.print("\n Enter Height: "); 
+                height = keypad.nextDouble();
+                dashes(30);
+                System.out.print("\n Your BMI is: " + 
+                        (weight / (height * height)) + "\n");                
+            }catch(Exception e){
+                break;
+            }
+            System.out.print("\n BMI VALUES \n"); 
+            dashes(30);
+            printRow(2, "UNDER WEIGHT", "LESS THAN 18.5",
+                    "NORMAL", "BETWEEN 18.5 AND 24.9",
+                    "OVERWEIGHT", "BETWEEN 25 AND 29.9",
+                    "OBESE", "30 OR GREATER");
+            System.out.print("\n\n");
+        }
+    }
+    public static void printRow(int cols, String... args){
+        int k = cols;
+        for(String element: args){
+            if(k > 0){
+                System.out.print(element + "\t\t\t");
+            }else{
+                System.out.print("\n" + element + "\t\t\t");
+                k = cols;
+            }
+            k -= 1;
+        }
+    }
+}
+
+
+
+#	QUESTION 4 ~
+----------------------------------------------------------------------
+/**
+ *
+ * @author benkimz
+ */
+
+import java.util.Scanner;
+
+@FunctionalInterface
+interface RootsFinder{
+    abstract void getRoots(double a, double b, double c);
+}
+
+class Complex{
+    public String value(double real, double imaginary, String symb){
+        return String.format("%.2f " + symb + " %.2fi", real, imaginary);
+    }
+    protected String symb;
+    Complex(String... args){this.symb = args[0];}
+}
+
+public class QuadraticEquations {
+    public static void main(String args[]) {
+        //CUSTOM TYPE COMPLEX
+        Complex complex = new Complex("j");
+        
+        RootsFinder roots = (double a, double b, double c) -> {
+            double discriminant = Math.pow(b, 2) - (4 * a * c);
+            System.out.print('\n');for(int i=0;i<60;i++){System.out.print('-');}
+            if(discriminant == 0){
+                //ROOT1 == ROOT2
+                System.out.print("\n The roots are real and identical: [" + 
+                        (-b / 2 * a) + ", " + (-b / 2 * a) + "]\n\n");
+            }else if(discriminant > 0){
+                //ROOTS ARE REAL BUT UNIDENTICAL
+                System.out.print("\n The roots are real and unidentical: [" + 
+                        ((-b + Math.sqrt(discriminant)) / 2 * a) + ", " + ((-b - Math.sqrt(discriminant)) / 2 * a) + "]\n\n");               
+            }else{
+                //THE ROOTS ARE COMPLEX
+                System.out.print("\n The roots are complex: [" + 
+                        complex.value((-b / 2 * a), (Math.sqrt(-discriminant) / 2* a), "+") + ", " + 
+                        complex.value((-b / 2 * a), (Math.sqrt(-discriminant) / 2* a), "-") + "]\n\n");                 
+            }
+        };
+
+        Scanner keypad = new Scanner(System.in);
+        while(true){
+            try{
+                double a, b, c;
+                System.out.print("\n Enter coefficient a: "); a = keypad.nextDouble();
+                System.out.print("\n Enter coefficient b: "); b = keypad.nextDouble();
+                System.out.print("\n Enter coefficient c: "); c = keypad.nextDouble();
+                roots.getRoots(a, b, c);
+            }catch(Exception e){
+                break;
+            }
+        }
+    }
+}
+---------------------------------------------------------------------------------------

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>SwitchGrader.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: monospace}
+pre {color: #000000; background-color: #ffffff; font-family: monospace}
+table {color: #404040; background-color: #e9e8e2; font-family: monospace}
+.ST0 {color: #969696; font-family: monospace; font-weight: bold}
+.ST1 {font-family: monospace; font-weight: bold}
+.comment {color: #969696}
+.ST2 {font-family: monospace; font-weight: bold; font-style: italic}
+.ST3 {font-family: monospace; font-style: italic}
+.ST4 {color: #ce54b8; font-family: monospace; font-style: italic}
+.string {color: #1e9347}
+.ST5 {color: #1e9347; font-family: monospace; font-weight: bold}
+.literal {color: #336bdd}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">C:\Users\benkimz\Desktop\Java\projects\SwitchGrader.java</td></tr></table>
+<pre>
+ 1 <span class="comment">/**</span>
+ 2 <span class="comment"> * </span><span class="ST0">@author</span> <span class="comment">benkimz</span>
+ 3 <span class="comment"> * </span><span class="comment">A</span> <span class="comment">GRADING</span> <span class="comment">PROGRAM</span> <span class="comment">USING</span> <span class="comment">THE</span> <span class="comment">SWITCH</span> <span class="comment">STATEMENT</span>
+ 4 <span class="comment"> * </span><span class="comment">Java</span> <span class="comment">Programming</span>
+ 5 <span class="comment">*/</span>
+ 6 
+ 7 <span class="literal">import</span> java.util.Scanner;
+ 8 <span class="literal">import</span> java.time.temporal.ValueRange;
+ 9 
+10 @FunctionalInterface
+11 <span class="literal">interface</span> <span class="ST1">SwitchGrading</span>{
+12     <span class="literal">abstract</span> String <span class="ST1">grade</span>(<span class="literal">int</span> mark);
+13 }
+14 
+15 <span class="literal">public</span> <span class="literal">class</span> <span class="ST1">SwitchGrader</span> {
+16     <span class="literal">public</span> <span class="literal">static</span> <span class="literal">void</span> <span class="ST2">main</span>(String args[]) {
+17         
+18         SwitchGrading grader = (<span class="literal">int</span> mark) -&gt; {
+19             ValueRange gradeA = ValueRange.<span class="ST3">of</span>(80, 100);
+20             ValueRange gradeB = ValueRange.<span class="ST3">of</span>(60, 79);
+21             ValueRange gradeC = ValueRange.<span class="ST3">of</span>(40, 59);
+22             ValueRange gradeD = ValueRange.<span class="ST3">of</span>(30, 39);
+23             ValueRange fail = ValueRange.<span class="ST3">of</span>(0, 29);
+24             <span class="literal">switch</span>(
+25                     (gradeA.isValidValue(mark)) ? <span class="string">&quot;</span><span class="string">A</span><span class="string">&quot;</span> : 
+26                     (gradeB.isValidValue(mark)) ? <span class="string">&quot;</span><span class="string">B</span><span class="string">&quot;</span> : 
+27                     (gradeC.isValidValue(mark)) ? <span class="string">&quot;</span><span class="string">C</span><span class="string">&quot;</span> : 
+28                     (gradeD.isValidValue(mark)) ? <span class="string">&quot;</span><span class="string">D</span><span class="string">&quot;</span> : 
+29                     (fail.isValidValue(mark)) ? <span class="string">&quot;</span><span class="string">F</span><span class="string">&quot;</span> : <span class="string">&quot;</span><span class="string">INVALID</span><span class="string">&quot;</span>
+30                     ){
+31                 <span class="literal">case</span> <span class="string">&quot;</span><span class="string">A</span><span class="string">&quot;</span>:
+32                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">A</span><span class="string">&quot;</span>;
+33                 <span class="literal">case</span> <span class="string">&quot;</span><span class="string">B</span><span class="string">&quot;</span>:
+34                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">B</span><span class="string">&quot;</span>;
+35                 <span class="literal">case</span> <span class="string">&quot;</span><span class="string">C</span><span class="string">&quot;</span>:
+36                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">C</span><span class="string">&quot;</span>;
+37                 <span class="literal">case</span> <span class="string">&quot;</span><span class="string">D</span><span class="string">&quot;</span>:
+38                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">D</span><span class="string">&quot;</span>;
+39                 <span class="literal">case</span> <span class="string">&quot;</span><span class="string">F</span><span class="string">&quot;</span>:
+40                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">FAIL</span><span class="string">&quot;</span>;
+41                 <span class="literal">default</span>:
+42                     <span class="literal">return</span> <span class="string">&quot;</span><span class="string">INVALID</span><span class="string">&quot;</span>;
+43             }            
+44         };
+45         
+46         Scanner input = <span class="literal">new</span> Scanner(System.<span class="ST4">in</span>);
+47         System.<span class="ST4">out</span>.print(<span class="string">&quot;</span><span class="ST5">\n</span><span class="string"> --- System Online [Ready to Grade] --- </span><span class="string">&quot;</span>);
+48         <span class="literal">while</span>(<span class="literal">true</span>){
+49             <span class="literal">try</span>{
+50                 System.<span class="ST4">out</span>.print(<span class="string">&quot;</span><span class="ST5">\n</span><span class="ST5">\t</span><span class="string"> Enter mark: </span><span class="string">&quot;</span>);
+51                 <span class="literal">int</span> mark = input.nextInt();
+52                 System.<span class="ST4">out</span>.println(<span class="string">&quot;</span><span class="ST5">\t</span><span class="ST5">\t</span><span class="string"> grade: </span><span class="string">&quot;</span> + grader.grade(mark));
+53             }<span class="literal">catch</span>(Exception e){
+54                 <span class="literal">break</span>;
+55             }
+56         }
+57     }
+58 }
+59 
+</pre></body>
+</html>
